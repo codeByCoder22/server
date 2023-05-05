@@ -19,3 +19,7 @@
 ## npm i bcryptjs
 
 ## npm i @types/bcryptjs -D
+
+## npm i jsonwebtoken
+
+## npm i @types/jsonwebtoken -D
