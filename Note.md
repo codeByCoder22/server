@@ -9,3 +9,13 @@
 ## npm i socket.io
 
 ## npm i @types/express -D
+
+## npm i validator
+
+## npm i @types/validator
+
+## npm i @types/validator -D
+
+## npm i bcryptjs
+
+## npm i @types/bcryptjs -D
