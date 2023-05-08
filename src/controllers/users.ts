@@ -12,7 +12,7 @@ const normalizeUser = (user: UserDocument) => {
         email: user.email,
         username: user.username,
         id: user.id,
-        token,
+        token: `Bearer ${token}`,
     };
 };
 
@@ -50,7 +50,7 @@ export const login = async (
         const user = await UserModel.findOne({ email: req.body.email }).select(
             "+password"
         );
-        const errors = { emailOrPassword: "Incorrect email or password" };
+        const errors = { emailOrPassword: "Incorrect email or password4546" };
 
         if (!user) {
             return res.status(422).json(errors);
