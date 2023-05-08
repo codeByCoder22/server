@@ -10,4 +10,9 @@ Content-Type: application/json
 ###################
 
 GET http://localhost:4001/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTUzY2M1MGE1OTkzZjg3YWM2OWQ2NyIsImVtYWlsIjoiZXhhbXBsZUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MzMwNzcxN30.l6OAjO71pO2Qt51PYoKvFVSj_e0aNyvR1m8kkjzFzfM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTg4NWE3NTM3YWFjODM0NTA5YmQxZiIsImVtYWlsIjoiMTJAMTIuY29tIiwiaWF0IjoxNjgzNTIyOTg0fQ.8tmHa4BS2DanUKAKFRlXdFAVO3OCmmNmmbjpINUQulI
+
+##############################
+
+GET http://localhost:4001/api/boards
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTg4NWE3NTM3YWFjODM0NTA5YmQxZiIsImVtYWlsIjoiMTJAMTIuY29tIiwiaWF0IjoxNjgzNTIyOTg0fQ.8tmHa4BS2DanUKAKFRlXdFAVO3OCmmNmmbjpINUQulI

@@ -5,6 +5,7 @@ export interface User {
     username: string;
     password: string;
     createdAt: Date;
+    updatedAt: Date;
 }
 
 // any object that is of type UserDocument
