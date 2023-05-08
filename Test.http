@@ -10,4 +10,4 @@ Content-Type: application/json
 ###################
 
 GET http://localhost:4001/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTUxMjgxNzk2OWU4ZDIxY2Q2MWE2YyIsImVtYWlsIjoiZXhhbXBsZUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MzI5Njg5N30.5cfBfkXpEHfehy5rM7JfJSJKfBDOte1M4zAsIAMOYlA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTUzY2M1MGE1OTkzZjg3YWM2OWQ2NyIsImVtYWlsIjoiZXhhbXBsZUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MzMwNzcxN30.l6OAjO71pO2Qt51PYoKvFVSj_e0aNyvR1m8kkjzFzfM
