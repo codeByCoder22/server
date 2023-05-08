@@ -25,3 +25,20 @@
 ## npm i @types/jsonwebtoken -D
 
 ## npm i cors
+
+## Mongoose command:
+
+use eltrello
+show collections
+
+## MongoDB Compass insert Document
+
+{
+"\_id": {
+"$oid": "6458ad9277fe7e809dc6f344"
+  },
+  "title": "Second board",
+  "userId": {
+    "$oid": "645885a7537aac834509bd1f"
+}
+}
