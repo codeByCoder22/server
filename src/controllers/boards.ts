@@ -31,7 +31,7 @@ export const getBoardById = async (
         console.log("UserId: ", req.user.id);
         const boardId = req.params.id;
         console.log("BoardId: ", boardId);
-        const board = await BoardModel.findById({ _id: boardId });
+        const board = await BoardModel.findById(boardId);
         // const board = await BoardModel.findOne({ _id: boardId });
         res.send(board);
     } catch (err) {
