@@ -1,3 +1,5 @@
+## run this command to launch the server : npm start
+
 ## npm i nodemon -D
 
 ## npm i ts-node -D
