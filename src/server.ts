@@ -32,12 +32,14 @@ app.post("/api/users/login", usersController.login);
 app.get("/api/user", authMiddleware, usersController.currentUser);
 app.get("/api/boards", authMiddleware, boardsController.getBoards);
 app.post("/api/boards", authMiddleware, boardsController.createBoard);
+app.get("/api/boards/:id", authMiddleware, boardsController.getBoardById);
 
 io.on("connection", () => {
     console.log("connect");
 });
 
-mongoose.connect("mongodb://localhost:27017/eltrello").then(() => {
+mongoose.connect("mongodb://127.0.0.1:27017/eltrello").then(() => {
+    // mongoose.connect("mongodb://localhost:27017/eltrello").then(() => {
     console.log("connected to mongodb");
     httpServer.listen(4001, () => {
         console.log(`API is listening on port 4001`);

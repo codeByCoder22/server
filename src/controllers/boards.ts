@@ -11,9 +11,29 @@ export const getBoards = async (
         if (!req.user) {
             return res.sendStatus(401);
         }
-        console.log(req.user.id);
+        console.log("UserId: ", req.user.id);
         const boards = await BoardModel.find({ userId: req.user.id });
         res.send(boards);
+    } catch (err) {
+        next(err);
+    }
+};
+
+export const getBoardById = async (
+    req: ExpressRequestInterface,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        if (!req.user) {
+            return res.sendStatus(401);
+        }
+        console.log("UserId: ", req.user.id);
+        const boardId = req.params.id;
+        console.log("BoardId: ", boardId);
+        const board = await BoardModel.findById({ _id: boardId });
+        // const board = await BoardModel.findOne({ _id: boardId });
+        res.send(board);
     } catch (err) {
         next(err);
     }
