@@ -12,6 +12,7 @@ import jwt from "jsonwebtoken";
 import User from "./models/user";
 import { Socket } from "./types/socket.interface";
 import { secret } from "./config";
+import * as columnsController from "./controllers/columns";
 
 const app = express();
 const httpServer = createServer(app);
@@ -44,6 +45,12 @@ app.get("/api/user", authMiddleware, usersController.currentUser);
 app.get("/api/boards", authMiddleware, boardsController.getBoards);
 app.post("/api/boards", authMiddleware, boardsController.createBoard);
 app.get("/api/boards/:id", authMiddleware, boardsController.getBoardById);
+
+app.get(
+    "/api/boards/:boardId/columns",
+    authMiddleware,
+    columnsController.getColumns
+);
 
 io.use(async (socket: Socket, next) => {
     try {
