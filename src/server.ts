@@ -13,6 +13,7 @@ import User from "./models/user";
 import { Socket } from "./types/socket.interface";
 import { secret } from "./config";
 import * as columnsController from "./controllers/columns";
+import * as tasksController from "./controllers/tasks";
 
 const app = express();
 const httpServer = createServer(app);
@@ -52,6 +53,8 @@ app.get(
     columnsController.getColumns
 );
 
+app.get("/api/boards/:boardId/tasks", authMiddleware, tasksController.getTasks);
+
 io.use(async (socket: Socket, next) => {
     try {
         const token = (socket.handshake.auth.token as string) ?? "";
@@ -79,6 +82,9 @@ io.use(async (socket: Socket, next) => {
     });
     socket.on(SocketEventsEnum.columnsCreate, (data) => {
         columnsController.createColumn(io, socket, data);
+    });
+    socket.on(SocketEventsEnum.tasksCreate, (data) => {
+        tasksController.createTask(io, socket, data);
     });
 });
 
