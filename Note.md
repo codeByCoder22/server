@@ -69,3 +69,22 @@ show collections
   "boardId": {
     "$oid": "6458ad9277fe7e809dc6f344"
 }
+
+## Insert a task
+
+{
+"\_id": {
+"$oid": "6458ad9277fe7e809dc6f344"
+  },
+  "title": "First task - 57",
+  "description":"description 57",
+  "userId": {
+    "$oid": "645885a7537aac834509bd1f"
+},
+"boardId": {
+"$oid": "6458aca677fe7e809dc6f342"
+},
+"columnId": {
+"$oid": "645f2f24fe8c1930b1948623"
+}
+}
