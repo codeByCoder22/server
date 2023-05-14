@@ -46,6 +46,8 @@ app.get("/api/user", authMiddleware, usersController.currentUser);
 app.get("/api/boards", authMiddleware, boardsController.getBoards);
 app.post("/api/boards", authMiddleware, boardsController.createBoard);
 app.get("/api/boards/:id", authMiddleware, boardsController.getBoardById);
+// WQ
+app.get("/api/deleteAllTasks", authMiddleware, tasksController.deleteAllTasks);
 
 app.get(
     "/api/boards/:boardId/columns",
