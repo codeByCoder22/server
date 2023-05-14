@@ -94,6 +94,9 @@ io.use(async (socket: Socket, next) => {
     socket.on(SocketEventsEnum.boardsDelete, (data) => {
         boardsController.deleteBoard(io, socket, data);
     });
+    socket.on(SocketEventsEnum.columnsDelete, (data) => {
+        columnsController.deleteColumn(io, socket, data);
+    });
 });
 
 mongoose.connect("mongodb://127.0.0.1:27017/eltrello").then(() => {
