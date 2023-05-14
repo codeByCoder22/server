@@ -31,3 +31,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTg4NWE3N
 
 GET http://localhost:4001/api/boards/6458aca677fe7e809dc6f342/tasks
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTg4NWE3NTM3YWFjODM0NTA5YmQxZiIsImVtYWlsIjoiMTJAMTIuY29tIiwiaWF0IjoxNjgzNTIyOTg0fQ.8tmHa4BS2DanUKAKFRlXdFAVO3OCmmNmmbjpINUQulI
+
+
+##############################
+
+GET http://localhost:4001/api/deleteAllTasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTg4NWE3NTM3YWFjODM0NTA5YmQxZiIsImVtYWlsIjoiMTJAMTIuY29tIiwiaWF0IjoxNjgzNTIyOTg0fQ.8tmHa4BS2DanUKAKFRlXdFAVO3OCmmNmmbjpINUQulI
