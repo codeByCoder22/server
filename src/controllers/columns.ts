@@ -5,6 +5,8 @@ import { SocketEventsEnum } from "../types/socketEvents.enum";
 import { getErrorMessage } from "../helpers";
 import { Socket } from "../types/socket.interface";
 import { Server } from "socket.io";
+// WQ
+import TaskModel from "../models/task";
 
 export const getColumns = async (
     req: ExpressRequestInterface,
@@ -68,9 +70,10 @@ export const deleteColumn = async (
             return;
         }
         await ColumnModel.deleteOne({ _id: data.columnId });
+
         io.to(data.boardId).emit(
             SocketEventsEnum.columnsDeleteSuccess,
-            data.columnId
+            data.columnId,
         );
     } catch (err) {
         socket.emit(
@@ -107,5 +110,29 @@ export const updateColumn = async (
             SocketEventsEnum.columnsUpdateFailure,
             getErrorMessage(err)
         );
+    }
+};
+
+// WQ
+export const deleteAllColunms = async (
+    req: ExpressRequestInterface,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        if (!req.user) {
+            return res.sendStatus(401);
+        }
+        console.log("UserId: ", req.user.id);
+        const anyTask = await TaskModel.find({});
+        if (anyTask.length > 0) {
+            return res.send(
+                "There are still tasks in the database. Please delete them first."
+            );
+        }
+        const returnMessage = await ColumnModel.deleteMany();
+        res.send(returnMessage);
+    } catch (err) {
+        next(err);
     }
 };
