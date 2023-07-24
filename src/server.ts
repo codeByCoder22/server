@@ -16,6 +16,8 @@ import * as columnsController from "./controllers/columns";
 import * as tasksController from "./controllers/tasks";
 
 const app = express();
+app.use(cors());
+
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
@@ -25,7 +27,6 @@ const io = new Server(httpServer, {
     },
 });
 
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -48,7 +49,12 @@ app.post("/api/boards", authMiddleware, boardsController.createBoard);
 app.get("/api/boards/:id", authMiddleware, boardsController.getBoardById);
 // WQ
 app.get("/api/deleteAllTasks", authMiddleware, tasksController.deleteAllTasks);
-
+app.get(
+    "/api/deleteAllColunms",
+    authMiddleware,
+    columnsController.deleteAllColunms
+);
+// WQ
 app.get(
     "/api/boards/:boardId/columns",
     authMiddleware,
@@ -64,6 +70,7 @@ io.use(async (socket: Socket, next) => {
             id: string;
             email: string;
         };
+        console.log("io.use :",data)
         const user = await User.findById(data.id);
 
         if (!user) {
@@ -75,12 +82,16 @@ io.use(async (socket: Socket, next) => {
         next(new Error("Authentication error"));
     }
 }).on("connection", (socket) => {
+    console.log("a user connected");
+
     socket.on(SocketEventsEnum.boardsJoin, (data) => {
-        console.log("boardsJoin-57", data);
+        console.log("socket.IO_connect_boardsJoin -------", data);
         boardsController.joinBoard(io, socket, data);
     });
     socket.on(SocketEventsEnum.boardsLeave, (data) => {
+        console.log("Socket.IO_board_leave...")
         boardsController.leaveBoard(io, socket, data);
+        console.log("server.ts_leaving board,board_id: ",data)
     });
     socket.on(SocketEventsEnum.columnsCreate, (data) => {
         columnsController.createColumn(io, socket, data);
@@ -108,7 +119,8 @@ io.use(async (socket: Socket, next) => {
     });
 });
 
-mongoose.connect("mongodb://127.0.0.1:27017/eltrello").then(() => {
+mongoose.connect("mongodb+srv://edgkcty:WD6ppAZONvd9EHkf@trello.bc7gct7.mongodb.net/?retryWrites=true&w=majority").then(() => {
+// mongoose.connect("mongodb://127.0.0.1:27017/eltrello").then(() => {
     // mongoose.connect("mongodb://localhost:27017/eltrello").then(() => {
     console.log("connected to mongodb");
     httpServer.listen(4001, () => {

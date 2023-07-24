@@ -99,10 +99,13 @@ export const updateBoard = async (
             data.fields,
             { new: true }
         );
+        // io.emit(
         io.to(data.boardId).emit(
             SocketEventsEnum.boardsUpdateSuccess,
             updatedBoard
         );
+        console.log("board_name_update_success data.boardId",data.boardId);
+        console.log("board_name_update_success",updatedBoard);
     } catch (err) {
         socket.emit(SocketEventsEnum.boardsUpdateFailure, getErrorMessage(err));
     }
